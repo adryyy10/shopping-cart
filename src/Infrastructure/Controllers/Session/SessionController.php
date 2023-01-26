@@ -39,8 +39,6 @@ class SessionController extends AbstractController
             'productId' => (int)$request->get('productId'),
         ];
 
-        var_dump($_SESSION['cart']); die();
-
         // Instantiate new AddProduct\Command that it will be passed as argument in $addProductUsecase
         $command = new AddProduct\Command((object)$data);
         $addProductUsecase($command);

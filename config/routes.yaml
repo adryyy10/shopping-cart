@@ -1,3 +1,15 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# Adding route for listing products
+app_listing_products:
+    path: /products
+    controller: App\Infrastructure\Controllers\Product\ProductController::listProducts
+
+# Adding route for creating session
+app_create_session:
+    path: /add
+    controller: App\Infrastructure\Controllers\Session\SessionController::addProduct
+
+  
+# Adding route for cart
+app_cart:
+    path: /cart
+    controller: App\Infrastructure\Controllers\Cart\CartController::listProducts

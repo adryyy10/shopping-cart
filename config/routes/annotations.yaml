@@ -2,6 +2,11 @@ controllers:
     resource: ../../src/Controller/
     type: annotation
 
+
+controllerProducts:
+    resource: ../../src/Infrastructure/Controllers/Product
+    type: annotation
+
 kernel:
     resource: ../../src/Kernel.php
     type: annotation

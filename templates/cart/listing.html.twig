@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/cart.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/button.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {% if products|length != 0 %}
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.code }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ (discount is defined and discount is not null) ? product.price|number_format(2, '.', ',') * 0.9 : product.price|number_format(2, '.', ',') }} £</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form action="/cart" class="product" method="POST">
+            <input type="checkbox" id="discount" name="discount" value="1">
+            <button class="add-to-cart" name="add" type="submit">Apply 10% discount</button>
+        </form>
+
+        <h1>TOTAL: {{ (discount is defined and discount is not null) ? finalPrice|number_format(2, '.', ',') * 0.9 : finalPrice|number_format(2, '.', ',') }} £ </h1>
+    {% endif %}
+
+    <a class="add-button" href="/products">Return to products</a>
+{% endblock %}

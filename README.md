@@ -1,8 +1,8 @@
-# shopping-cart
+# Shopping cart
 
 Shopping cart is an application that allows you to add products to your cart (without adding the same one twice) and to be able to make a 10% discount on your final list
 
-# How can I see it locally?
+## How can I see it locally?
 
 It is easy to reproduce it locally
 
@@ -18,7 +18,7 @@ And here we have our products:
 
 ![Alt text](readme-images/002.PNG?raw=true "Products")
 
-# How the application is structured
+## How the application is structured
 
 For this application I implemented a structural pattern called Hexagonal Architecture which divides the application in 3 main layers and keeps the code separate and understandable:
 1. Infrastructure layer --> Here we have all "external" services that need to be as decoupled as possible: Controllers, Repositories...etc.
@@ -27,7 +27,7 @@ For this application I implemented a structural pattern called Hexagonal Archite
 
 ![Alt text](readme-images/003.PNG?raw=true "Structure")
 
-# What is the flow of the application
+## What is the flow of the application
 
 We start in **/products** route where we can see all of our available products.
 
@@ -51,7 +51,7 @@ Once we are in **/cart** we can see the list of our chosen products, and if we c
 
 ![Alt text](readme-images/008.PNG?raw=true "Discount applied")
 
-# Tests
+## Tests
 
 I created Unit Tests in **/tests** folder that tests the use cases of the application and check the type of the variables we are receiving
 

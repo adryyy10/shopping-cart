@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/header.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/listing.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('css/button.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <header>
+        <nav class="navbar">
+            <a href="/products" class="products-link">Shopping cart</a>
+            <div class="navbar-nav">
+                <a href="/cart" class="cart-link">
+                    <h3>Cart {{productsAdded|length}}</h3>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Products</h1>
+        <div class="products">
+            {% for product in products %}
+                <form action="/add" class="product" method="POST">
+                    <div>
+                        <h2>{{product.name}}</h2>
+                        <h4>{{product.price}} GBP</h4>
+                        <button class="add-to-cart" name="add" type="submit">Add to cart</button>
+                        <input type="hidden" name="productId" value="{{product.id}}"/>
+                    </div>
+                </form>
+            {% endfor %}
+        </div>
+        <div>
+            <a class="add-button" href="/cart">Go to cart</a>
+        </div>
+    </div>
+{% endblock %}
